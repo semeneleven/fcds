@@ -1,5 +1,18 @@
-project(DevtoolsService)
+cmake_minimum_required(VERSION 3.24)
 
-set(CMAKE_CXX_STANDARD 20)
+project(FCDS)
 
-add_executable(DevtoolsService main.cc)
+set(CMAKE_CXX_STANDARD 23)
+
+set(SRC src/main.cc)
+
+add_executable(FCDS ${SRC})
+
+find_package(Boost REQUIRED)
+if (NOT Boost_FOUND)
+    message(FATAL_ERROR "Boost not found")
+else()    
+    include_directories(${Boost_INCLUDE_DIRS})
+endif()    
+
+target_link_libraries(FCDS PRIVATE ${Boost_LIBRARIES})
