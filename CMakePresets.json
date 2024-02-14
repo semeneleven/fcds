@@ -1,0 +1,71 @@
+{
+    "$schema": "https://cmake.org/cmake/help/latest/_downloads/3e2d73bff478d88a7de0de736ba5e361/schema.json",
+    "version": 8,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 24,
+        "patch": 1
+    },
+    "configurePresets": [
+        {
+            "name": "fcds-config",
+            "displayName": "Ninja Multi-Config",
+            "description": "Configure with vcpkg toolchain and generate Ninja project files for all configurations",
+            "binaryDir": "${sourceDir}/builds/${presetName}",
+            "generator": "Ninja Multi-Config",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "type": "FILEPATH",
+                    "value": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+                }
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "fcds-debug",
+            "configurePreset": "fcds-config",
+            "displayName": "Build (Debug)",
+            "description": "Build with Ninja/vcpkg (Debug)",
+            "configuration": "Debug"
+        },
+        {
+            "name": "fcds-release",
+            "configurePreset": "fcds-config",
+            "displayName": "Build (Release)",
+            "description": "Build with Ninja/vcpkg (Release)",
+            "configuration": "Release"
+        },
+        {
+            "name": "fcds",
+            "configurePreset": "fcds-config",
+            "displayName": "Build",
+            "description": "Build with Ninja/vcpkg"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "test-fcds",
+            "configurePreset": "fcds-config",
+            "hidden": true
+        },
+        {
+            "name": "test-debug",
+            "description": "Test (Debug)",
+            "displayName": "Test (Debug)",
+            "configuration": "Debug",
+            "inherits": [
+                "test-fcds"
+            ]
+        },
+        {
+            "name": "test-release",
+            "description": "Test (Release)",
+            "displayName": "Test (Release)",
+            "configuration": "Release",
+            "inherits": [
+                "test-fcds"
+            ]
+        }
+    ]
+}

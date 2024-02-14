@@ -1,0 +1,11 @@
+{
+  "name": "main",
+  "version-string": "latest",
+  "dependencies": [
+    {
+      "name": "curl",
+      "version>=": "8.6.0"
+    }
+  ],
+  "builtin-baseline": "095ee06e7f60dceef7d713e3f8b1c2eb10d650d7"
+}
