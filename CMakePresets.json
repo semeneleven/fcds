@@ -35,12 +35,6 @@
             "displayName": "Build (Release)",
             "description": "Build with Ninja/vcpkg (Release)",
             "configuration": "Release"
-        },
-        {
-            "name": "fcds",
-            "configurePreset": "fcds-config",
-            "displayName": "Build",
-            "description": "Build with Ninja/vcpkg"
         }
     ],
     "testPresets": [
